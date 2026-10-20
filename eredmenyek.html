@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#180d2c">
+<title>Halloween 2026 – Szervezői eredmények</title>
+<style>
+:root{color-scheme:dark;--bg:#10091d;--panel:#211333;--panel2:#2c1940;--orange:#ff8b24;--purple:#b88cff;--text:#fff8ef;--muted:#c9bad8;--line:#513667;--green:#a8f0bc}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#39204e 0,#160d24 45%,#0d0816 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+main{width:min(1080px,100%);margin:auto;padding:22px 16px 48px}.hero{text-align:center;padding:14px 8px 22px}.pumpkin{font-size:44px}.eyebrow{color:var(--orange);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}h1{font-size:clamp(1.8rem,6vw,3rem);line-height:1.08;margin:10px 0}h2{margin:0 0 12px;font-size:1.25rem}h3{margin:0 0 8px}.subtitle{color:var(--muted);max-width:650px;margin:10px auto 0;line-height:1.5}.card{background:linear-gradient(145deg,rgba(47,27,67,.97),rgba(29,17,43,.97));border:1px solid var(--line);border-radius:20px;padding:18px;margin:14px 0;box-shadow:0 12px 34px #0003}.notice{color:var(--muted);font-size:.93rem;line-height:1.5}.field{display:block;width:100%;margin:7px 0 12px;padding:12px 13px;border-radius:10px;border:1px solid #765091;background:#180e25;color:var(--text);font:inherit}.btn{border:0;border-radius:12px;background:linear-gradient(100deg,#ff9b31,#ff7426);color:#261000;font-weight:900;font-size:1rem;padding:12px 16px;cursor:pointer}.btn.secondary{background:#4a2b60;color:#fff;border:1px solid #765091}.btn:disabled{opacity:.55;cursor:wait}.status{padding:13px;border-radius:12px;background:#180e25;border:1px solid var(--line);margin-top:12px;line-height:1.5;overflow-wrap:anywhere}.status.error{border-color:#c95a72;color:#ffdbe1}.status.success{border-color:#5eac77;color:var(--green)}.hidden{display:none!important}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.stat{background:#180e25;border:1px solid var(--line);border-radius:14px;padding:14px}.stat strong{display:block;font-size:1.8rem;color:var(--orange)}.stat span{color:var(--muted);font-size:.85rem}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line)}th{color:#d7b9f3;font-size:.85rem}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}.medal{font-size:1.3rem}.pill{display:inline-block;border-radius:999px;background:#4a2b60;padding:4px 9px;font-size:.8rem}.top-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.top-card{border:1px solid var(--line);border-radius:15px;padding:15px;background:#180e25}.top-card .place{font-size:1.6rem}.top-card .avg{font-size:1.8rem;color:var(--orange);font-weight:900}.muted{color:var(--muted)}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.footer{text-align:center;color:#a99ab8;font-size:.8rem;padding-top:16px}.cert-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.cert-control{border:1px solid var(--line);border-radius:14px;padding:14px;background:#180e25}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions .btn{flex:1}.small{font-size:.83rem}
+#certificatePrint{display:none}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.top-grid,.cert-list{grid-template-columns:1fr}.card{padding:14px}main{padding:14px 10px 32px}}
+@media print{body{background:#fff!important;color:#211333!important}body.printing-certificate main,body.printing-results main{display:none!important}body.printing-certificate #certificatePrint,body.printing-results #resultsPrint{display:block!important}#certificatePrint .certificate{display:block!important}#resultsPrint{display:block!important}.certificate{color:#211333!important;border:12px double #7c4c99!important;background:#fffaf2!important;width:100%;min-height:180mm;padding:18mm;text-align:center;page-break-after:always;font-family:Georgia,serif}.certificate h1{color:#5a2b75!important;font-size:30pt}.certificate .award{color:#a45c00!important;font-size:18pt;font-weight:bold}.certificate .winner{font-size:25pt;font-weight:bold;border-bottom:2px solid #d69b36;padding:8mm 0;margin:8mm 0}.certificate .details{font-size:14pt;line-height:1.8}.certificate .seal{font-size:35pt}#resultsPrint{color:#211333!important;background:white!important;padding:8mm}#resultsPrint table{min-width:0}#resultsPrint th,#resultsPrint td{border-bottom:1px solid #ccc;color:#211333!important}.no-print{display:none!important}@page{size:A4;margin:12mm}}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div class="pumpkin" aria-hidden="true">🎃 👻 🕸️</div>
+    <div class="eyebrow">Isaszeg • 2026 • Szervezői felület</div>
+    <h1>Halloween <span style="color:var(--orange)">eredmények</span></h1>
+    <p class="subtitle">Titkos szavazatok, automatikus rangsor és oklevelek. Ez az oldal csak a jogosult szervezői fiókkal érhető el.</p>
+  </header>
+
+  <section id="loginCard" class="card">
+    <h2>🔐 Szervezői belépés</h2>
+    <p class="notice">Jelentkezz be a szervezői e-mail-címmel és a Firebase Authenticationben beállított jelszóval.</p>
+    <form id="loginForm">
+      <label for="email">E-mail-cím</label>
+      <input class="field" id="email" type="email" autocomplete="username" value="ferenczviktor86@gmail.com" required>
+      <label for="password">Jelszó</label>
+      <input class="field" id="password" type="password" autocomplete="current-password" required>
+      <button class="btn" id="loginBtn" type="submit">Belépés az eredményekhez</button>
+      <div id="loginStatus" class="status hidden" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section id="dashboard" class="hidden">
+    <section class="card">
+      <div class="section-head"><div><h2>📊 Összesített áttekintés</h2><p class="notice">Az adatok a Firebase-ben tárolt szavazatokból frissülnek.</p></div><div class="actions"><button id="refreshBtn" class="btn secondary">Frissítés</button><button id="printResultsBtn" class="btn secondary">Eredmények nyomtatása / PDF</button><button id="logoutBtn" class="btn secondary">Kilépés</button></div></div>
+      <div id="dataStatus" class="status">Eredmények betöltése…</div>
+      <div id="stats" class="grid hidden"></div>
+    </section>
+
+    <section class="card">
+      <h2>🏆 Az összes útvonal közös TOP 3 helyezettje</h2>
+      <p class="notice">A rangsor az összes útvonal összes házát összehasonlítja. Csak az adott házra ténylegesen érkezett pontok számítanak az átlagba.</p>
+      <div id="topThree" class="top-grid"></div>
+    </section>
+
+    <section class="card">
+      <h2>🗺️ Szavazatok útvonalanként</h2>
+      <div class="table-wrap"><table><thead><tr><th>Útvonal</th><th class="num">Szavazatok</th><th class="num">Értékelt házak</th></tr></thead><tbody id="routeRows"></tbody></table></div>
+    </section>
+
+    <section class="card">
+      <h2>📋 Teljes házrangsor</h2>
+      <div class="table-wrap"><table><thead><tr><th>Hely</th><th>Ház / útvonal</th><th class="num">Átlag</th><th class="num">Értékelések</th><th class="num">Pontösszeg</th></tr></thead><tbody id="rankingRows"></tbody></table></div>
+    </section>
+
+    <section class="card">
+      <h2>📜 TOP 3 oklevelek</h2>
+      <p class="notice">A házak neve vagy címe itt megadható az oklevélhez. Az oklevelek A4-es méretben nyomtathatók, illetve a böngésző nyomtatási ablakában PDF-ként menthetők.</p>
+      <div id="certList" class="cert-list"></div>
+    </section>
+  </section>
+  <div class="footer">✦ A szavazatok titkosak • Szervezői hozzáférés szükséges ✦</div>
+</main>
+<div id="certificatePrint"></div>
+<div id="resultsPrint"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDwV5snQvx1OkSWZpPHpCimC-U1bkL1hmE",
+  authDomain: "isaszegterkep.firebaseapp.com",
+  projectId: "isaszegterkep",
+  appId: "1:281753218765:web:650fc7c14ef7aced344384"
+};
+const ORGANIZER_EMAIL = "ferenczviktor86@gmail.com";
+const ROUTES = {"1":7,"2":4,"3":6,"4":6,"5":6};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+const $ = id => document.getElementById(id);
+let currentTopThree = [];
+let currentRows = [];
+let routeCounts = {};
+let totalBallots = 0;
+
+function showStatus(el, message, kind="") {
+  el.textContent = message;
+  el.className = "status" + (kind ? " " + kind : "");
+  el.classList.remove("hidden");
+}
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function avgText(n) { return n == null ? "—" : n.toFixed(2).replace(".", ","); }
+
+$("loginForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const email = $("email").value.trim().toLowerCase();
+  const password = $("password").value;
+  const btn = $("loginBtn");
+  btn.disabled = true;
+  showStatus($("loginStatus"), "Bejelentkezés…");
+  try {
+    if (email !== ORGANIZER_EMAIL) throw new Error("Ezzel az e-mail-címmel nincs szervezői hozzáférés.");
+    await auth.signInWithEmailAndPassword(email, password);
+  } catch (err) {
+    showStatus($("loginStatus"), err.code === "auth/invalid-credential" || err.code === "auth/wrong-password" || err.code === "auth/user-not-found"
+      ? "A belépés nem sikerült. Ellenőrizd az e-mail-címet és a jelszót, illetve hogy a szervezői fiókot létrehoztad-e a Firebase Authenticationben."
+      : (err.message || "A bejelentkezés nem sikerült."), "error");
+  } finally { btn.disabled = false; }
+});
+
+auth.onAuthStateChanged(async user => {
+  if (!user) {
+    $("loginCard").classList.remove("hidden");
+    $("dashboard").classList.add("hidden");
+    return;
+  }
+  if ((user.email || "").toLowerCase() !== ORGANIZER_EMAIL || user.isAnonymous) {
+    await auth.signOut();
+    showStatus($("loginStatus"), "Ez a fiók nem jogosult a szervezői eredmények megtekintésére.", "error");
+    return;
+  }
+  $("loginCard").classList.add("hidden");
+  $("dashboard").classList.remove("hidden");
+  await loadResults();
+});
+
+$("logoutBtn").addEventListener("click", () => auth.signOut());
+$("refreshBtn").addEventListener("click", loadResults);
+$("printResultsBtn").addEventListener("click", printResults);
+
+async function loadResults() {
+  showStatus($("dataStatus"), "Eredmények betöltése…");
+  $("stats").classList.add("hidden");
+  try {
+    const snap = await db.collection("halloweenBallots").get();
+    const ballots = [];
+    snap.forEach(doc => ballots.push(doc.data()));
+    totalBallots = ballots.length;
+    routeCounts = {};
+    const houseMap = new Map();
+    Object.entries(ROUTES).forEach(([route, count]) => {
+      routeCounts[route] = 0;
+      for (let house = 1; house <= count; house++) {
+        houseMap.set(`${route}-${house}`, {route:Number(route), house, count:0, sum:0});
+      }
+    });
+    ballots.forEach(b => {
+      const route = String(Number(b.route));
+      if (!ROUTES[route]) return;
+      routeCounts[route] = (routeCounts[route] || 0) + 1;
+      const scores = b.scores || {};
+      Object.entries(scores).forEach(([houseKey, rawScore]) => {
+        const score = Number(rawScore);
+        const item = houseMap.get(`${route}-${Number(houseKey)}`);
+        if (item && Number.isFinite(score) && score >= 1 && score <= 10) {
+          item.count++;
+          item.sum += score;
+        }
+      });
+    });
+    currentRows = [...houseMap.values()].map(x => ({...x, average:x.count ? x.sum/x.count : null}))
+      .sort((a,b) => {
+        if (a.average == null && b.average == null) return a.route-b.route || a.house-b.house;
+        if (a.average == null) return 1;
+        if (b.average == null) return -1;
+        return b.average-a.average || b.count-a.count || a.route-b.route || a.house-b.house;
+      });
+    currentTopThree = currentRows.filter(x => x.average != null).slice(0,3);
+    renderResults();
+    showStatus($("dataStatus"), `Sikeres frissítés. ${totalBallots} szavazat betöltve.`, "success");
+  } catch (err) {
+    console.error(err);
+    showStatus($("dataStatus"), "Az eredmények nem tölthetők be. Ellenőrizd a Firebase Rules beállítását és a szervezői jogosultságot. (" + (err.code || err.message || "hiba") + ")", "error");
+  }
+}
+
+function renderResults() {
+  $("stats").innerHTML = `
+    <div class="stat"><strong>${totalBallots}</strong><span>Összes szavazat</span></div>
+    <div class="stat"><strong>5</strong><span>Útvonal</span></div>
+    <div class="stat"><strong>${currentRows.filter(x=>x.count>0).length}</strong><span>Kapott értékelést</span></div>
+    <div class="stat"><strong>${currentTopThree.length}</strong><span>TOP 3 helyezett</span></div>`;
+  $("stats").classList.remove("hidden");
+  $("routeRows").innerHTML = Object.entries(ROUTES).map(([r,n]) =>
+    `<tr><td><span class="pill">${r}. útvonal</span></td><td class="num">${routeCounts[r] || 0}</td><td class="num">${n}</td></tr>`).join("");
+  const medals = ["🥇","🥈","🥉"];
+  $("topThree").innerHTML = currentTopThree.length ? currentTopThree.map((x,i) => `
+    <div class="top-card"><div class="place">${medals[i]} <span class="muted">${i+1}. hely</span></div>
+    <h3>${x.route}. útvonal · ${x.house}. ház</h3><div class="avg">${avgText(x.average)} / 10</div>
+    <div class="muted small">${x.count} értékelés · ${x.sum} összpont</div></div>`).join("") : `<p class="notice">Még nincs elegendő szavazat a rangsorhoz.</p>`;
+  let rank = 0, lastAvg = null;
+  $("rankingRows").innerHTML = currentRows.map((x,i) => {
+    if (x.average != null && x.average !== lastAvg) rank = i+1;
+    lastAvg = x.average;
+    const position = x.average == null ? "—" : rank;
+    const medal = rank===1 && x.average!=null ? "🥇 " : rank===2 && x.average!=null ? "🥈 " : rank===3 && x.average!=null ? "🥉 " : "";
+    return `<tr><td>${medal}${position}</td><td>${x.route}. útvonal · ${x.house}. ház</td><td class="num">${avgText(x.average)}</td><td class="num">${x.count}</td><td class="num">${x.sum}</td></tr>`;
+  }).join("");
+  renderCertificates();
+}
+function renderCertificates() {
+  const medals = ["🥇","🥈","🥉"], labels = ["I. helyezés","II. helyezés","III. helyezés"];
+  $("certList").innerHTML = currentTopThree.map((x,i) => `
+    <div class="cert-control">
+      <h3>${medals[i]} ${labels[i]}</h3>
+      <p>${x.route}. útvonal · ${x.house}. ház — átlag: <strong>${avgText(x.average)}</strong></p>
+      <label for="winnerName${i}">Ház neve / címe az oklevélre</label>
+      <input class="field" id="winnerName${i}" placeholder="Pl. Család neve vagy cím" maxlength="100">
+      <button class="btn" type="button" data-cert="${i}">Oklevél nyomtatása / PDF</button>
+    </div>`).join("") || `<p class="notice">Amint érkeznek szavazatok, itt megjelennek az oklevelek.</p>`;
+  $("certList").querySelectorAll("[data-cert]").forEach(btn => btn.addEventListener("click", () => printCertificate(Number(btn.dataset.cert))));
+}
+function certificateMarkup(x, place, name) {
+  const medals = ["🥇","🥈","🥉"], awards = ["ARANY DÍJ","EZÜST DÍJ","BRONZ DÍJ"];
+  const winner = name.trim() || `${x.route}. útvonal ${x.house}. háza`;
+  return `<article class="certificate">
+    <div class="seal">${medals[place]}</div>
+    <div style="letter-spacing:.18em;font-size:12pt">ISASZEG • HALLOWEEN 2026</div>
+    <h1>Halloween Csokigyűjtés</h1>
+    <div class="award">${awards[place]}</div>
+    <p style="font-size:16pt">Elismerő oklevél</p>
+    <div class="winner">${esc(winner)}</div>
+    <div class="details">A közös szavazás alapján<br><strong>${place+1}. helyezést</strong> ért el<br>
+    a ${x.route}. útvonal ${x.house}. házaként.<br><br>
+    Átlagpontszám: <strong>${avgText(x.average)} / 10</strong><br>
+    Értékelések száma: <strong>${x.count}</strong></div>
+    <p style="margin-top:16mm;font-size:12pt">Köszönjük, hogy hozzájárultál az isaszegi Halloween hangulatához!</p>
+    <div style="margin-top:14mm;border-top:1px solid #b9a4c9;padding-top:4mm;font-size:10pt">Isaszeg • 2026</div>
+  </article>`;
+}
+function printCertificate(index) {
+  const x = currentTopThree[index];
+  if (!x) return;
+  const name = $("winnerName"+index).value || "";
+  $("certificatePrint").innerHTML = certificateMarkup(x,index,name);
+  document.body.classList.remove("printing-results");
+  document.body.classList.add("printing-certificate");
+  window.print();
+  setTimeout(() => document.body.classList.remove("printing-certificate"), 500);
+}
+function printResults() {
+  const rows = currentRows.filter(x=>x.average != null).map((x,i) =>
+    `<tr><td>${i+1}</td><td>${x.route}. útvonal · ${x.house}. ház</td><td style="text-align:right">${avgText(x.average)}</td><td style="text-align:right">${x.count}</td><td style="text-align:right">${x.sum}</td></tr>`).join("");
+  const routes = Object.entries(ROUTES).map(([r,n]) => `<tr><td>${r}. útvonal</td><td style="text-align:right">${routeCounts[r]||0}</td><td style="text-align:right">${n}</td></tr>`).join("");
+  $("resultsPrint").innerHTML = `<h1>🎃 Halloween Csokigyűjtés 2026 – eredmények</h1><p>Összes szavazat: <strong>${totalBallots}</strong></p><h2>Szavazatok útvonalanként</h2><table><thead><tr><th>Útvonal</th><th>Szavazatok</th><th>Értékelt házak</th></tr></thead><tbody>${routes}</tbody></table><h2>Teljes rangsor</h2><table><thead><tr><th>Hely</th><th>Ház / útvonal</th><th>Átlag</th><th>Értékelések</th><th>Pontösszeg</th></tr></thead><tbody>${rows}</tbody></table>`;
+  document.body.classList.remove("printing-certificate");
+  document.body.classList.add("printing-results");
+  window.print();
+  setTimeout(() => document.body.classList.remove("printing-results"), 500);
+}
+</script>
+</body>
+</html>
