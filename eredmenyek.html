@@ -60,8 +60,8 @@ main{width:min(1080px,100%);margin:auto;padding:22px 16px 48px}.hero{text-align:
     </section>
 
     <section class="card">
-      <h2>📜 TOP 3 oklevelek</h2>
-      <p class="notice">A házak neve vagy címe itt megadható az oklevélhez. Az oklevelek A4-es méretben nyomtathatók, illetve a böngésző nyomtatási ablakában PDF-ként menthetők.</p>
+      <h2>📜 Körönkénti díjazottak és oklevelek</h2>
+      <p class="notice">Minden útvonalon kizárólag az első helyezett kap díjat. Add meg a ház nevét vagy címét az oklevélhez. Az oklevelek A4-es méretben nyomtathatók, illetve PDF-ként menthetők.</p>
       <div id="certList" class="cert-list"></div>
     </section>
   </section>
@@ -87,6 +87,7 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 const $ = id => document.getElementById(id);
 let currentTopThree = [];
+let currentRouteWinners = [];
 let currentRows = [];
 let routeCounts = {};
 let totalBallots = 0;
@@ -176,6 +177,7 @@ async function loadResults() {
         return b.average-a.average || b.count-a.count || a.route-b.route || a.house-b.house;
       });
     currentTopThree = currentRows.filter(x => x.average != null).slice(0,3);
+    currentRouteWinners = Object.keys(ROUTES).map(route => currentRows.filter(x => String(x.route) === route && x.average != null)[0]).filter(Boolean);
     renderResults();
     showStatus($("dataStatus"), `Sikeres frissítés. ${totalBallots} szavazat betöltve.`, "success");
   } catch (err) {
@@ -206,7 +208,23 @@ function renderResults() {
     const medal = rank===1 && x.average!=null ? "🥇 " : rank===2 && x.average!=null ? "🥈 " : rank===3 && x.average!=null ? "🥉 " : "";
     return `<tr><td>${medal}${position}</td><td>${x.route}. útvonal · ${x.house}. ház</td><td class="num">${avgText(x.average)}</td><td class="num">${x.count}</td><td class="num">${x.sum}</td></tr>`;
   }).join("");
-  renderCertificates();
+  renderRouteAwards();
+}
+function renderRouteAwards() {
+  const medals = ["🥇"];
+  $("certList").innerHTML = Object.keys(ROUTES).map(route => {
+    const x = currentRouteWinners.find(w => String(w.route) === route);
+    if (!x) return `<div class="cert-control"><h3>🏆 ${route}. útvonal</h3><p class="notice">Még nincs értékelés ezen az útvonalon.</p></div>`;
+    return `<div class="cert-control">
+      <h3>🥇 ${route}. útvonal – díjazott</h3>
+      <p>${x.house}. ház — átlag: <strong>${avgText(x.average)}</strong></p>
+      <p class="muted small">${x.count} értékelés · ${x.sum} összpont</p>
+      <label for="winnerNameRoute${route}">Ház neve / címe az oklevélre</label>
+      <input class="field" id="winnerNameRoute${route}" placeholder="Pl. Család neve vagy cím" maxlength="100">
+      <button class="btn" type="button" data-route-cert="${route}">Oklevél nyomtatása / PDF</button>
+    </div>`;
+  }).join("");
+  $("certList").querySelectorAll("[data-route-cert]").forEach(btn => btn.addEventListener("click", () => printRouteCertificate(btn.dataset.routeCert)));
 }
 function renderCertificates() {
   const medals = ["🥇","🥈","🥉"], labels = ["I. helyezés","II. helyezés","III. helyezés"];
@@ -220,29 +238,27 @@ function renderCertificates() {
     </div>`).join("") || `<p class="notice">Amint érkeznek szavazatok, itt megjelennek az oklevelek.</p>`;
   $("certList").querySelectorAll("[data-cert]").forEach(btn => btn.addEventListener("click", () => printCertificate(Number(btn.dataset.cert))));
 }
-function certificateMarkup(x, place, name) {
-  const medals = ["🥇","🥈","🥉"], awards = ["ARANY DÍJ","EZÜST DÍJ","BRONZ DÍJ"];
+function certificateMarkup(x, name) {
   const winner = name.trim() || `${x.route}. útvonal ${x.house}. háza`;
   return `<article class="certificate">
-    <div class="seal">${medals[place]}</div>
+    <div class="seal">🥇</div>
     <div style="letter-spacing:.18em;font-size:12pt">ISASZEG • HALLOWEEN 2026</div>
     <h1>Halloween Csokigyűjtés</h1>
-    <div class="award">${awards[place]}</div>
+    <div class="award">ÚTVONALGYŐZTES</div>
     <p style="font-size:16pt">Elismerő oklevél</p>
     <div class="winner">${esc(winner)}</div>
-    <div class="details">A közös szavazás alapján<br><strong>${place+1}. helyezést</strong> ért el<br>
-    a ${x.route}. útvonal ${x.house}. házaként.<br><br>
+    <div class="details">A ${x.route}. útvonal szavazásán<br><strong>az I. helyezést</strong> érte el.<br><br>
     Átlagpontszám: <strong>${avgText(x.average)} / 10</strong><br>
     Értékelések száma: <strong>${x.count}</strong></div>
     <p style="margin-top:16mm;font-size:12pt">Köszönjük, hogy hozzájárultál az isaszegi Halloween hangulatához!</p>
     <div style="margin-top:14mm;border-top:1px solid #b9a4c9;padding-top:4mm;font-size:10pt">Isaszeg • 2026</div>
   </article>`;
 }
-function printCertificate(index) {
-  const x = currentTopThree[index];
+function printRouteCertificate(route) {
+  const x = currentRouteWinners.find(w => String(w.route) === String(route));
   if (!x) return;
-  const name = $("winnerName"+index).value || "";
-  $("certificatePrint").innerHTML = certificateMarkup(x,index,name);
+  const name = $("winnerNameRoute" + route).value || "";
+  $("certificatePrint").innerHTML = certificateMarkup(x, name);
   document.body.classList.remove("printing-results");
   document.body.classList.add("printing-certificate");
   window.print();
@@ -252,7 +268,8 @@ function printResults() {
   const rows = currentRows.filter(x=>x.average != null).map((x,i) =>
     `<tr><td>${i+1}</td><td>${x.route}. útvonal · ${x.house}. ház</td><td style="text-align:right">${avgText(x.average)}</td><td style="text-align:right">${x.count}</td><td style="text-align:right">${x.sum}</td></tr>`).join("");
   const routes = Object.entries(ROUTES).map(([r,n]) => `<tr><td>${r}. útvonal</td><td style="text-align:right">${routeCounts[r]||0}</td><td style="text-align:right">${n}</td></tr>`).join("");
-  $("resultsPrint").innerHTML = `<h1>🎃 Halloween Csokigyűjtés 2026 – eredmények</h1><p>Összes szavazat: <strong>${totalBallots}</strong></p><h2>Szavazatok útvonalanként</h2><table><thead><tr><th>Útvonal</th><th>Szavazatok</th><th>Értékelt házak</th></tr></thead><tbody>${routes}</tbody></table><h2>Teljes rangsor</h2><table><thead><tr><th>Hely</th><th>Ház / útvonal</th><th>Átlag</th><th>Értékelések</th><th>Pontösszeg</th></tr></thead><tbody>${rows}</tbody></table>`;
+  const awards = Object.keys(ROUTES).map(r => { const x = currentRouteWinners.find(w => String(w.route) === r); return `<tr><td>${r}. útvonal</td><td>${x ? `${x.house}. ház` : "Még nincs értékelés"}</td><td style="text-align:right">${x ? avgText(x.average) : "—"}</td><td style="text-align:right">${x ? x.count : 0}</td></tr>`; }).join("");
+  $("resultsPrint").innerHTML = `<h1>Halloween Csokigyűjtés 2026 – eredmények</h1><p>Összes szavazat: <strong>${totalBallots}</strong></p><h2>Körönkénti díjazottak (útvonalanként az első helyezett)</h2><table><thead><tr><th>Útvonal</th><th>Díjazott ház</th><th>Átlag</th><th>Értékelések</th></tr></thead><tbody>${awards}</tbody></table><h2>Szavazatok útvonalanként</h2><table><thead><tr><th>Útvonal</th><th>Szavazatok</th><th>Értékelt házak</th></tr></thead><tbody>${routes}</tbody></table><h2>Teljes rangsor</h2><table><thead><tr><th>Hely</th><th>Ház / útvonal</th><th>Átlag</th><th>Értékelések</th><th>Pontösszeg</th></tr></thead><tbody>${rows}</tbody></table>`;
   document.body.classList.remove("printing-certificate");
   document.body.classList.add("printing-results");
   window.print();
